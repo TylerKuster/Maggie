@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/TylerKuster/Maggie/issues"
   },
-  "homepage": "https://github.com/TylerKuster/Maggie#readme"
+  "homepage": "https://github.com/TylerKuster/Maggie#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.78.0"
+  }
 }
