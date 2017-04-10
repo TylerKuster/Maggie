@@ -13,9 +13,9 @@ app.get('/vehicle-link', function (req, res)
   res.send('Success!')
 })
 
-app.post('/webhook/', funtion(req, res) {
-	res.send('hello world');
-})
+// app.post('/webhook/', funtion(req, res) {
+// 	res.send('hello world');
+// })
 
 app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'))
