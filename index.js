@@ -1,5 +1,5 @@
 var express = require('express');
-var httpProxy = require('http-proxy');
+var proxy = require('http-proxy-middleware');
 var app = express();
 var bodyParser = require('body-parser')
 var request = require('request');
@@ -17,8 +17,10 @@ var server = httpProxy.createServer(
 app.use(bodyParser.json())
 app.use(enforce.HTTPS());
 
-app.set('port', (process.env.PORT || 5000));
+app.use('/vehicle-link', proxy({target: 'https://maggie-chatbot.herokuapp.com', changeOrigin: true}));
+app.listen(3000);
 
+app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) 
 {
