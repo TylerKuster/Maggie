@@ -6,7 +6,7 @@ var request = require('request');
 
 app.use(bodyParser.json())
 
-app.use('/vehicle-link', proxy({target: 'https://maggie-chatbot.herokuapp.com', changeOrigin: true}));
+app.use('/vehicle-link', proxy({target: 'http://maggie-chatbot.herokuapp.com', changeOrigin: true}));
 
 app.set('port', (process.env.PORT || 5000));
 
