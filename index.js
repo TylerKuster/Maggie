@@ -11,7 +11,7 @@ app.get('/', function (req, res)
   res.send('Maggie is working!')
 })
 
-app.get('/vehicle-link', function (req, res) 
+app.post('/vehicle-link', function (req, res) 
 {
 	console.log(req);
 
