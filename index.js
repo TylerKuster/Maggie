@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
+var request = require('request');
 
 app.use(bodyParser.json())
 app.set('port', (process.env.PORT || 5000));
@@ -129,7 +130,7 @@ function sendTextMessage(recipientId, messageText) {
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: PAGE_ACCESS_TOKEN },
+    qs: { access_token: 'EAAJHbiOaOQ4BAB6Hc6jfcCElZA5JCHJEfdi477KzZBuUDZAMOJzfIDLT2fafHK9GTZBBasZCgdJdwd65Xh7ZCzgKWHj6uUqazmMZB3glLIbCJT5jWVIsF875zjrJBfUEbX4AwKcZCajIjNkq72W7POixpRDYju8wqDtZAhkeRBv08vgZDZD' },
     method: 'POST',
     json: messageData
 
