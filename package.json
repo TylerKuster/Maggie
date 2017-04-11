@@ -23,6 +23,7 @@
     "express": "^4.15.2",
     "express-sslify": "^1.2.0",
     "http": "0.0.0",
+    "http-proxy": "^1.16.2",
     "request": "^2.81.0"
   }
 }

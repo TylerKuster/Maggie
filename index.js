@@ -1,21 +1,24 @@
 var express = require('express');
-var http = require('http');
-var enforce = require('express-sslify')
+var httpProxy = require('http-proxy');
 var app = express();
 var bodyParser = require('body-parser')
 var request = require('request');
 
+var port = process.env.PORT || 8000;
+
+var routing = {
+  '/devices': { port: process.env.DEVICES_PORT || 80, host: process.env.DEVICES_URI }
+}
+
+var server = httpProxy.createServer(
+  require('./lib/uri-middleware')(routing)
+).listen(port);
 
 app.use(bodyParser.json())
 app.use(enforce.HTTPS());
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
+app.set('port', (process.env.PORT || 5000));
 
-app.set('port', (443));
-
-http.createServer(app).listen(app.get('port'), function() {
-	console.log('Express server listening on port ' + app.get('port'));
-});
 
 app.get('/', function (req, res) 
 {
@@ -78,9 +81,9 @@ app.post('/webhook', function (req, res) {
   }
 });
   
-app.listen(app.get('port'), function() {
-    console.log("Node app is running at localhost:" + app.get('port'))
-});
+// app.listen(app.get('port'), function() {
+//     console.log("Node app is running at localhost:" + app.get('port'))
+// });
 
 //
 // Functions
@@ -155,9 +158,9 @@ function callSendAPI(messageData) {
       console.log("Successfully sent generic message with id %s to recipient %s", 
         messageId, recipientId);
     } else {
-      // console.error("Unable to send message.");
-      // console.error(response);
-      // console.error(error);
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
     }
   });  
 }
