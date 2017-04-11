@@ -1,5 +1,5 @@
 var express = require('express');
-// var http = require('http');
+var http = require('http');
 var enforce = require('express-sslify')
 var app = express();
 var bodyParser = require('body-parser')
@@ -13,9 +13,9 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 app.set('port', (process.env.PORT || 5000));
 
-// http.createServer(app).listen(app.get('port'), function() {
-// 	console.log('Express server listening on port ' + app.get('port'));
-// });
+http.createServer(app).listen(app.get('port'), function() {
+	console.log('Express server listening on port ' + app.get('port'));
+});
 
 app.get('/', function (req, res) 
 {
