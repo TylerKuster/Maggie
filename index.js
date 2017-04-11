@@ -15,7 +15,7 @@ app.post('/vehicle-link', function (req, res)
 {
 	console.log(req);
 
-  	res.send(200);
+  	res.sendStatus(200);
 })
 
 //
