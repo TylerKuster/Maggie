@@ -13,7 +13,9 @@ app.get('/', function (req, res)
 
 app.get('/vehicle-link', function (req, res) 
 {
-  res.send('Success!')
+	console.log(req);
+
+  	res.send(200);
 })
 
 //
