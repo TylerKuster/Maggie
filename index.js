@@ -4,21 +4,10 @@ var app = express();
 var bodyParser = require('body-parser')
 var request = require('request');
 
-var port = process.env.PORT || 8000;
-
-var routing = {
-  '/devices': { port: process.env.DEVICES_PORT || 80, host: process.env.DEVICES_URI }
-}
-
-var server = httpProxy.createServer(
-  require('./lib/uri-middleware')(routing)
-).listen(port);
-
 app.use(bodyParser.json())
 app.use(enforce.HTTPS());
 
 app.use('/vehicle-link', proxy({target: 'https://maggie-chatbot.herokuapp.com', changeOrigin: true}));
-app.listen(3000);
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -83,9 +72,9 @@ app.post('/webhook', function (req, res) {
   }
 });
   
-// app.listen(app.get('port'), function() {
-//     console.log("Node app is running at localhost:" + app.get('port'))
-// });
+app.listen(app.get('port'), function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
+});
 
 //
 // Functions
