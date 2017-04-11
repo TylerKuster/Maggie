@@ -11,7 +11,7 @@ app.use(enforce.HTTPS());
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (443));
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
