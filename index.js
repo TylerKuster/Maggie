@@ -5,7 +5,6 @@ var bodyParser = require('body-parser')
 var request = require('request');
 
 app.use(bodyParser.json())
-app.use(enforce.HTTPS());
 
 app.use('/vehicle-link', proxy({target: 'https://maggie-chatbot.herokuapp.com', changeOrigin: true}));
 
